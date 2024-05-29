@@ -17,28 +17,28 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="bg-gray-800 p-4">
+    <nav className="bg-black p-4 shadow-lg">
       <div className="container mx-auto flex justify-between items-center">
         <Link href="/" legacyBehavior>
-          <a className="text-white text-lg font-semibold">Home</a>
+          <a className="text-red-600 text-3xl font-bold">Shwapno</a>
         </Link>
         <div>
           {isClientSide && isLoggedIn() ? (
             <>
               <Link href="/dashboard" legacyBehavior>
-                <a className="text-white mx-2">Dashboard</a>
+                <a className="text-white mx-4 hover:text-red-600 transition duration-300">Dashboard</a>
               </Link>
-              <button onClick={handleLogout} className="text-white">
+              <button onClick={handleLogout} className="text-white hover:text-red-600 transition duration-300">
                 Logout
               </button>
             </>
           ) : (
             <>
               <Link href="/login" legacyBehavior>
-                <a className="text-white mx-2">Login</a>
+                <a className="text-white mx-4 hover:text-red-600 transition duration-300">Login</a>
               </Link>
               <Link href="/register" legacyBehavior>
-                <a className="text-white mx-2">Register</a>
+                <a className="text-white mx-4 hover:text-red-600 transition duration-300">Register</a>
               </Link>
             </>
           )}

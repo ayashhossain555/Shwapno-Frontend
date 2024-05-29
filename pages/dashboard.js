@@ -22,11 +22,6 @@ const Dashboard = () => {
     checkAuth();
   }, [router]);
 
-  const handleLogout = () => {
-    logout();
-    router.push('/');
-  };
-
   if (loading) {
     return (
       <div className="flex justify-center items-center h-screen">
@@ -45,12 +40,6 @@ const Dashboard = () => {
       <div className="container mx-auto p-4">
         <h2 className="text-2xl font-bold mb-4">Dashboard</h2>
         <p>Welcome to the user dashboard!</p>
-        <button
-          onClick={handleLogout}
-          className="bg-red-500 text-white p-2 rounded mt-4"
-        >
-          Logout
-        </button>
       </div>
     </>
   );

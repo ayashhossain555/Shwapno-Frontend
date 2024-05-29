@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useRouter } from 'next/router';
+import Swal from 'sweetalert2';
 import { login, getUserRole } from '../utils/auth';
 import Navbar from '../components/Navbar';
 
@@ -22,40 +23,49 @@ const Login = () => {
       }
     } catch (error) {
       console.error("Login error:", error); // Debugging log
+      Swal.fire({
+        icon: 'error',
+        title: 'Login Failed',
+        text: 'Invalid email or password',
+      });
     }
   };
 
   return (
     <>
       <Navbar />
-      <div className="container mx-auto p-4">
-        <form onSubmit={handleSubmit} className="max-w-md mx-auto bg-white p-6 rounded shadow-md">
-          <h2 className="text-2xl font-bold mb-4">Login</h2>
-          <div className="mb-4">
-            <label className="block text-gray-700">Email</label>
-            <input
-              type="email"
-              className="w-full p-2 border border-gray-300 rounded mt-1"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
-          </div>
-          <div className="mb-4">
-            <label className="block text-gray-700">Password</label>
-            <input
-              type="password"
-              className="w-full p-2 border border-gray-300 rounded mt-1"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
-          </div>
-          <button
-            type="submit"
-            className="w-full bg-blue-500 text-white p-2 rounded mt-4"
-          >
-            Login
-          </button>
-        </form>
+      <div className="min-h-screen flex items-center justify-center bg-gray-900">
+        <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
+          <h2 className="text-3xl font-bold text-center text-red-600 mb-6">Login</h2>
+          <form onSubmit={handleSubmit}>
+            <div className="mb-4">
+              <label className="block text-gray-700 font-semibold">Email</label>
+              <input
+                type="email"
+                className="w-full p-2 border border-gray-300 rounded mt-1 focus:outline-none focus:ring-2 focus:ring-red-600"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+              />
+            </div>
+            <div className="mb-4">
+              <label className="block text-gray-700 font-semibold">Password</label>
+              <input
+                type="password"
+                className="w-full p-2 border border-gray-300 rounded mt-1 focus:outline-none focus:ring-2 focus:ring-red-600"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+              />
+            </div>
+            <button
+              type="submit"
+              className="w-full bg-red-600 text-white p-2 rounded-lg mt-4 hover:bg-red-700 transition duration-300"
+            >
+              Login
+            </button>
+          </form>
+        </div>
       </div>
     </>
   );

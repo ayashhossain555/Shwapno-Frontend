@@ -24,11 +24,6 @@ const Admin = () => {
     checkAuth();
   }, [router]);
 
-  const handleLogout = () => {
-    logout();
-    router.push('/');
-  };
-
   if (loading) {
     return (
       <div className="flex justify-center items-center h-screen">
@@ -47,12 +42,6 @@ const Admin = () => {
       <div className="container mx-auto p-4">
         <h2 className="text-2xl font-bold mb-4">Admin Panel</h2>
         <p>Welcome to the admin panel!</p>
-        <button
-          onClick={handleLogout}
-          className="bg-red-500 text-white p-2 rounded mt-4"
-        >
-          Logout
-        </button>
       </div>
     </>
   );
